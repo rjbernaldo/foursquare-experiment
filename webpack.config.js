@@ -30,6 +30,9 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         API_KEY: JSON.stringify(process.env.API_KEY),
+        CLIENT_ID: JSON.stringify(process.env.CLIENT_ID),
+        CLIENT_SECRET: JSON.stringify(process.env.CLIENT_SECRET),
+        VERSION: JSON.stringify(process.env.VERSION),
       },
     }),
   ],

@@ -14,6 +14,22 @@ class Sidebar extends Component {
     const float = 'left';
     const margin = '8px';
 
+    const lat = this.props.lat;
+    const lng = this.props.lng;
+
+    const CLIENT_ID = process.env.CLIENT_ID;
+    const CLIENT_SECRET = process.env.CLIENT_SECRET;
+    const VERSION = process.env.VERSION;
+    const url = `https://api.foursquare.com/v2/venues/search?ll=${lat},${lng}&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&v=${VERSION}`;
+
+    if (lat && lng) {
+      fetch(url)
+        .then(res => res.json())
+        .then((res) => {
+          console.log('foursquare', res);
+        });
+    }
+
     return (
       <div style={{ height, width, overflowY, float, margin }}>
         <h3 style={{ marginTop: '0px' }}>User Details</h3>
