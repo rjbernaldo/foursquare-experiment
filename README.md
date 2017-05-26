@@ -12,3 +12,5 @@ Small project to play around with different technologies using data from the Fou
 
   1. [https://developer.foursquare.com/](https://developer.foursquare.com/)
   2. [https://developer.foursquare.com/overview/auth.html](https://developer.foursquare.com/overview/auth.html)
+  3. [https://developers.google.com/maps/documentation/javascript/adding-a-google-map](https://developers.google.com/maps/documentation/javascript/adding-a-google-map)
+  4. [https://developers.google.com/maps/documentation/javascript/get-api-key](https://developers.google.com/maps/documentation/javascript/get-api-key)

@@ -19,7 +19,6 @@ class Map extends Component {
         navigator.geolocation.getCurrentPosition((position) => {
           const lat = position.coords.latitude;
           const lng = position.coords.longitude;
-          console.log(lat, lng);
 
           const map = new google.maps.Map(
             document.getElementById('map'),
