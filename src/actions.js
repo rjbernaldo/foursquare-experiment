@@ -30,7 +30,7 @@ export function setMap(map) {
 }
 
 export function fetchVenues(lat, lng) {
-  return (dispatch) => {
+  return (dispatch, getState) => {
     const CLIENT_ID = process.env.CLIENT_ID;
     const CLIENT_SECRET = process.env.CLIENT_SECRET;
     const VERSION = process.env.VERSION;
@@ -39,7 +39,42 @@ export function fetchVenues(lat, lng) {
     return fetch(url)
       .then(res => res.json())
       .then((res) => {
-        dispatch(setVenues(res.response.venues));
+        const map = getState().map.google;
+        const venues = res.response.venues.map((venue) => {
+          const title = venue.name;
+          const mouseoutIcon = {
+            url: 'https://cdn1.iconfinder.com/data/icons/material-core/20/check-circle-outline-blank-128.png',
+            scaledSize: new google.maps.Size(20, 20),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(0, 50),
+          };
+          const mouseoverIcon = {
+            url: 'http://games.stanford.edu/gamemaster/games/chinesecheckers/green.png',
+            scaledSize: new google.maps.Size(20, 20),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(0, 50),
+          };
+
+          const marker = new google.maps.Marker({
+            icon: mouseoutIcon,
+            position: { lat: venue.location.lat, lng: venue.location.lng },
+            map,
+            title,
+          });
+
+          marker.addListener('mouseover', () => {
+            dispatch(setCurrentMarkerId(venue.id));
+            marker.setIcon(mouseoverIcon);
+          });
+
+          marker.addListener('mouseout', () => {
+            marker.setIcon(mouseoutIcon);
+          });
+
+          return Object.assign({}, venue, { marker });
+        });
+
+        dispatch(setVenues(venues));
       });
   };
 }

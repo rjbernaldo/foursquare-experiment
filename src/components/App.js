@@ -10,11 +10,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const bodyMargin = 16;
-    const height = window.innerHeight - bodyMargin;
-    const fullWidth = window.innerWidth - bodyMargin;
+    const height = window.innerHeight;
+    const fullWidth = window.innerWidth;
     const width = Math.floor(fullWidth * (2 / 3));
-    const sidebarWidth = Math.floor(fullWidth * (1 / 3)) - bodyMargin;
+    const sidebarWidth = Math.floor(fullWidth * (1 / 3)) - 16;
 
     this.props.setDimensions(height, width, sidebarWidth);
   }

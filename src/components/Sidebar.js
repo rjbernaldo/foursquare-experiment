@@ -15,11 +15,13 @@ class Sidebar extends Component {
     const width = this.props.sidebarWidth;
     const overflowY = 'scroll';
     const float = 'left';
-    const margin = '8px';
+    const marginLeft = '8px';
+    const paddingTop = '8px';
+    const paddingBottom = '8px';
 
+        // <ConnectedUserDetails />
     return (
-      <div style={{ height, width, overflowY, float, margin }}>
-        <ConnectedUserDetails />
+      <div style={{ height, width, overflowY, float, marginLeft, paddingTop, paddingBottom }}>
         <ConnectedVenues />
       </div>
     );

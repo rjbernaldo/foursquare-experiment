@@ -49,30 +49,6 @@ class Map extends Component {
     this.props.setMap(map);
   }
 
-  renderVenueMarkers() {
-    this.props.venues.forEach((venue) => {
-      const lat = venue.location.lat;
-      const lng = venue.location.lng;
-      const title = venue.name;
-
-      const marker = new google.maps.Marker({
-        icon: {
-          url: 'https://cdn1.iconfinder.com/data/icons/material-core/20/check-circle-outline-blank-128.png',
-          scaledSize: new google.maps.Size(20, 20),
-          origin: new google.maps.Point(0, 0),
-          anchor: new google.maps.Point(0, 50),
-        },
-        position: { lat, lng },
-        map: this.props.map.google,
-        title,
-      });
-
-      marker.addListener('mouseover', () => {
-        this.props.setCurrentMarkerId(venue.id);
-      });
-    });
-  }
-
   render() {
     const height = this.props.height;
     const width = this.props.width;
@@ -80,7 +56,7 @@ class Map extends Component {
     const isRendered = this.props.isRendered;
     const float = 'left';
 
-    if (isFetched && !isRendered) this.renderVenueMarkers();
+    // if (isFetched && !isRendered) this.renderVenueMarkers();
 
     return (
       <div id="map" style={{ height, width, float }}>
@@ -97,6 +73,8 @@ class Map extends Component {
 Map.propTypes = {
   setMap: PropTypes.func.isRequired,
   setPosition: PropTypes.func.isRequired,
+  setVenues: PropTypes.func.isRequired,
+  renderVenues: PropTypes.func.isRequired,
   setCurrentMarkerId: PropTypes.func.isRequired,
   height: PropTypes.number,
   width: PropTypes.number,
