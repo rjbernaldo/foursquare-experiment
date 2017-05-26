@@ -25,6 +25,11 @@ class Map extends Component {
             { zoom: 17, center: { lat, lng } },
           );
 
+          const marker = new google.maps.Marker({
+            position: { lat, lng },
+            map,
+          });
+
           this.props.setMap(map);
           this.props.setPosition(lat, lng);
         });
