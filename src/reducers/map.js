@@ -1,10 +1,16 @@
-import { SET_MAP } from '../actions';
+import { SET_MAP, SET_CURRENT_MARKER_ID } from '../actions';
 
-export default (state = null, action) => {
-  console.log(action);
+const initialState = {
+  google: null,
+  currentMarkerId: null,
+};
+
+export default (state = initialState, action) => {
   switch (action.type) {
+    case SET_CURRENT_MARKER_ID:
+      return Object.assign({}, state, { currentMarkerId: action.currentMarkerId });
     case SET_MAP:
-      return action.map;
+      return Object.assign({}, state, { google: action.map });
     default:
       return state;
   }

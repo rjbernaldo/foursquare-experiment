@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Map from '../components/Map';
-import { setMap, setPosition } from '../actions';
+import { setMap, setPosition, setCurrentMarkerId } from '../actions';
 
 const mapStateToProps = state => ({
   height: state.dimensions.height,
@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
   venues: state.venues.data,
   isFetched: state.venues.isFetched,
   isRendered: state.venues.isRendered,
-  map: { obj: state.map },
+  map: { google: state.map.google },
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -17,6 +17,9 @@ const mapDispatchToProps = dispatch => ({
   },
   setPosition: (lat, lng) => {
     dispatch(setPosition(lat, lng));
+  },
+  setCurrentMarkerId: (currentMarkerId) => {
+    dispatch(setCurrentMarkerId(currentMarkerId));
   },
 });
 

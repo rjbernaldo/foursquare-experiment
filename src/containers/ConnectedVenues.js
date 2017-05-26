@@ -13,6 +13,7 @@ const mapStateToProps = state => ({
   lng: state.position.lng,
   isFetched: state.venues.isFetched,
   venues: state.venues.data,
+  currentMarkerId: state.map.currentMarkerId,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Venues);

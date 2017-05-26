@@ -52,8 +52,13 @@ class Map extends Component {
 
       const marker = new google.maps.Marker({
         position: { lat, lng },
-        map: this.props.map.obj,
+        map: this.props.map.google,
         title,
+      });
+
+      marker.addListener('mouseover', () => {
+        this.props.setCurrentMarkerId(venue.id);
+        // console.log(venue.name);
       });
     });
   }
@@ -82,6 +87,7 @@ class Map extends Component {
 Map.propTypes = {
   setMap: PropTypes.func.isRequired,
   setPosition: PropTypes.func.isRequired,
+  setCurrentMarkerId: PropTypes.func.isRequired,
   height: PropTypes.number,
   width: PropTypes.number,
   map: PropTypes.object,

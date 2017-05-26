@@ -1,6 +1,7 @@
 export const SET_DIMENSIONS = 'SET_DIMENSIONS';
 export const SET_POSITION = 'SET_POSITION';
 export const SET_MAP = 'SET_MAP';
+export const SET_CURRENT_MARKER_ID = 'SET_CURRENT_MARKER_ID';
 export const SET_VENUES = 'SET_VENUES';
 export const RENDER_VENUES = 'RENDER_VENUES';
 
@@ -56,3 +57,9 @@ export function renderVenues() {
   };
 }
 
+export function setCurrentMarkerId(currentMarkerId) {
+  return {
+    type: SET_CURRENT_MARKER_ID,
+    currentMarkerId,
+  };
+}

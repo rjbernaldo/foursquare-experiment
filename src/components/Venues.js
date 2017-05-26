@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Venue from './Venue';
+import ConnectedVenue from '../Containers/ConnectedVenue';
 
 class Venues extends Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class Venues extends Component {
       <div>
         <h3>Venues</h3>
         <ul>
-          { venues.map(venue => <Venue data={venue} />) }
+          { venues.map(venue => <ConnectedVenue data={venue} key={venue.id} />) }
         </ul>
       </div>
     );
