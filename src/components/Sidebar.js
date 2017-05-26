@@ -29,13 +29,8 @@ class Sidebar extends Component {
 }
 
 Sidebar.propTypes = {
-  height: PropTypes.number,
-  sidebarWidth: PropTypes.number,
-};
-
-Sidebar.defaultProps = {
-  height: 0,
-  sidebarWidth: 0,
+  height: PropTypes.number.isRequired,
+  sidebarWidth: PropTypes.number.isRequired,
 };
 
 export default Sidebar;

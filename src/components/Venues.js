@@ -30,15 +30,13 @@ class Venues extends Component {
 
 Venues.propTypes = {
   fetchVenues: PropTypes.func.isRequired,
-  venues: PropTypes.array,
-  isFetched: PropTypes.bool,
+  venues: PropTypes.array.isRequired,
+  isFetched: PropTypes.bool.isRequired,
   lat: PropTypes.number,
   lng: PropTypes.number,
 };
 
 Venues.defaultProps = {
-  venues: [],
-  isFetched: false,
   lat: null,
   lng: null,
 };

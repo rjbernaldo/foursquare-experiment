@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Map from '../components/Map';
-import { setMap, setPosition, setCurrentMarkerId, setVenues, renderVenues } from '../actions';
+import { setMap, setPosition } from '../actions';
 
 const mapStateToProps = state => ({
   height: state.dimensions.height,

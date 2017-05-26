@@ -63,13 +63,8 @@ class Map extends Component {
 Map.propTypes = {
   setMap: PropTypes.func.isRequired,
   setPosition: PropTypes.func.isRequired,
-  height: PropTypes.number,
-  width: PropTypes.number,
-};
-
-Map.defaultProps = {
-  height: 0,
-  width: 0,
+  height: PropTypes.number.isRequired,
+  width: PropTypes.number.isRequired,
 };
 
 export default Map;
