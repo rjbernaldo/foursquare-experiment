@@ -36,7 +36,12 @@ class Map extends Component {
     );
 
     const marker = new google.maps.Marker({
-      icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+      icon: {
+        url: 'http://www.iconsdb.com/icons/preview/tropical-blue/circle-outline-xxl.png',
+        scaledSize: new google.maps.Size(20, 20),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(0, 50),
+      },
       position: { lat, lng },
       map,
     });
@@ -51,6 +56,12 @@ class Map extends Component {
       const title = venue.name;
 
       const marker = new google.maps.Marker({
+        icon: {
+          url: 'https://cdn1.iconfinder.com/data/icons/material-core/20/check-circle-outline-blank-128.png',
+          scaledSize: new google.maps.Size(20, 20),
+          origin: new google.maps.Point(0, 0),
+          anchor: new google.maps.Point(0, 50),
+        },
         position: { lat, lng },
         map: this.props.map.google,
         title,
@@ -58,7 +69,6 @@ class Map extends Component {
 
       marker.addListener('mouseover', () => {
         this.props.setCurrentMarkerId(venue.id);
-        // console.log(venue.name);
       });
     });
   }

@@ -10,30 +10,22 @@ class Venue extends Component {
   render() {
     const data = this.props.data;
     const currentMarker = this.props.currentMarkerId === data.id;
+    const className = currentMarker
+      ? 'list-group-item list-group-item-action flex-column align-items-start active'
+      : 'list-group-item list-group-item-action flex-column align-items-start';
 
-    if (currentMarker) {
-      return (
-        <li>
-          <span style={{ fontWeight: 'bold' }}>{ data.name }</span>
-          <br />
-          Categories: { data.categories.map(category => category.name).join(', ') }
-          <br />
-          Contact: { data.contact.phone }
-          <br />
-          Location: { data.location.address }
-          <br />
-          Lat: { data.location.lat }
-          <br />
-          Lng: { data.location.lng }
-          <br />
-          Website: { data.url }
-          <br />
-        </li>
-      );
-    }
+    if (currentMarker) document.getElementById(`${data.id}`).scrollIntoView();
 
     return (
-      <li>{ data.name }</li>
+      <a id={ data.id } href="#" className={ className }>
+        <div className="d-flex w-100 justify-content-between">
+          <h5 className="mb-1">{ data.name }</h5>
+          <small>{ data.categories.map(category => category.name).join(', ') }</small>
+        </div>
+        <p className="mb-1">{ data.location.address }</p>
+        <p className="mb-1">{ data.contact.phone }</p>
+        <small>{ data.url }</small>
+      </a>
     );
   }
 }

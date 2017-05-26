@@ -21,9 +21,9 @@ class Venues extends Component {
     return (
       <div>
         <h3>Venues</h3>
-        <ul>
+        <div className="list-group">
           { venues.map(venue => <ConnectedVenue data={venue} key={venue.id} />) }
-        </ul>
+        </div>
       </div>
     );
   }
