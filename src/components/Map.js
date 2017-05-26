@@ -60,4 +60,10 @@ Map.propTypes = {
   map: PropTypes.object,
 };
 
+Map.defaultProps = {
+  height: 0,
+  width: 0,
+  map: null,
+};
+
 export default Map;

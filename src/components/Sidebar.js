@@ -38,4 +38,9 @@ Sidebar.propTypes = {
   sidebarWidth: PropTypes.number,
 };
 
+Sidebar.defaultProps = {
+  height: 0,
+  sidebarWidth: 0,
+};
+
 export default Sidebar;
