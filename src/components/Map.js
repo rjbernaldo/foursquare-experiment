@@ -52,20 +52,10 @@ class Map extends Component {
   render() {
     const height = this.props.height;
     const width = this.props.width;
-    const isFetched = this.props.isFetched;
-    const isRendered = this.props.isRendered;
     const float = 'left';
 
-    // if (isFetched && !isRendered) this.renderVenueMarkers();
-
     return (
-      <div id="map" style={{ height, width, float }}>
-        {
-          this.props.map
-            ? <span />
-            : <h1>Loading</h1>
-        }
-      </div>
+      <div id="map" style={{ height, width, float }} />
     );
   }
 }
@@ -73,24 +63,13 @@ class Map extends Component {
 Map.propTypes = {
   setMap: PropTypes.func.isRequired,
   setPosition: PropTypes.func.isRequired,
-  setVenues: PropTypes.func.isRequired,
-  renderVenues: PropTypes.func.isRequired,
-  setCurrentMarkerId: PropTypes.func.isRequired,
   height: PropTypes.number,
   width: PropTypes.number,
-  map: PropTypes.object,
-  venues: PropTypes.array,
-  isFetched: PropTypes.bool,
-  isRendered: PropTypes.bool,
 };
 
 Map.defaultProps = {
   height: 0,
   width: 0,
-  map: null,
-  venues: [],
-  isFetched: false,
-  isRendered: false,
 };
 
 export default Map;

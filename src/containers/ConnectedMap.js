@@ -6,9 +6,6 @@ const mapStateToProps = state => ({
   height: state.dimensions.height,
   width: state.dimensions.width,
   venues: state.venues.data,
-  isFetched: state.venues.isFetched,
-  isRendered: state.venues.isRendered,
-  map: { google: state.map.google },
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -17,15 +14,6 @@ const mapDispatchToProps = dispatch => ({
   },
   setPosition: (lat, lng) => {
     dispatch(setPosition(lat, lng));
-  },
-  setCurrentMarkerId: (currentMarkerId) => {
-    dispatch(setCurrentMarkerId(currentMarkerId));
-  },
-  setVenues: (venues) => {
-    dispatch(setVenues(venues));
-  },
-  renderVenues: () => {
-    dispatch(renderVenues());
   },
 });
 

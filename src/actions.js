@@ -42,21 +42,14 @@ export function fetchVenues(lat, lng) {
         const map = getState().map.google;
         const venues = res.response.venues.map((venue) => {
           const title = venue.name;
-          const mouseoutIcon = {
-            url: 'https://cdn1.iconfinder.com/data/icons/material-core/20/check-circle-outline-blank-128.png',
-            scaledSize: new google.maps.Size(20, 20),
-            origin: new google.maps.Point(0, 0),
-            anchor: new google.maps.Point(0, 50),
-          };
-          const mouseoverIcon = {
-            url: 'http://games.stanford.edu/gamemaster/games/chinesecheckers/green.png',
-            scaledSize: new google.maps.Size(20, 20),
-            origin: new google.maps.Point(0, 0),
-            anchor: new google.maps.Point(0, 50),
-          };
 
           const marker = new google.maps.Marker({
-            icon: mouseoutIcon,
+            icon: {
+              url: 'https://cdn1.iconfinder.com/data/icons/material-core/20/check-circle-outline-blank-128.png',
+              scaledSize: new google.maps.Size(20, 20),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(0, 50),
+            },
             position: { lat: venue.location.lat, lng: venue.location.lng },
             map,
             title,
@@ -64,11 +57,6 @@ export function fetchVenues(lat, lng) {
 
           marker.addListener('mouseover', () => {
             dispatch(setCurrentMarkerId(venue.id));
-            marker.setIcon(mouseoverIcon);
-          });
-
-          marker.addListener('mouseout', () => {
-            marker.setIcon(mouseoutIcon);
           });
 
           return Object.assign({}, venue, { marker });
