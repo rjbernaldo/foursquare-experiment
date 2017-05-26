@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Venue from './Venue';
 
 class Venues extends Component {
   constructor(props) {
@@ -10,35 +11,37 @@ class Venues extends Component {
   render() {
     const lat = this.props.lat;
     const lng = this.props.lng;
+    const isFetched = this.props.isFetched;
+    const venues = this.props.venues;
 
-    const CLIENT_ID = process.env.CLIENT_ID;
-    const CLIENT_SECRET = process.env.CLIENT_SECRET;
-    const VERSION = process.env.VERSION;
-    const url = `https://api.foursquare.com/v2/venues/search?ll=${lat},${lng}&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&v=${VERSION}`;
-
-    if (lat && lng) {
-      fetch(url)
-        .then(res => res.json())
-        .then((res) => {
-          console.log('foursquare', res.response.venues);
-        });
+    if (lat !== null && lng !== null && !isFetched) {
+      this.props.fetchVenues(lat, lng);
     }
+
     return (
       <div>
         <h3>Venues</h3>
+        <ul>
+          { venues.map(venue => <Venue data={venue} />) }
+        </ul>
       </div>
     );
   }
 }
 
 Venues.propTypes = {
+  fetchVenues: PropTypes.func.isRequired,
+  venues: PropTypes.array,
+  isFetched: PropTypes.bool,
   lat: PropTypes.number,
   lng: PropTypes.number,
 };
 
 Venues.defaultProps = {
-  lat: 0,
-  lng: 0,
+  venues: [],
+  isFetched: false,
+  lat: null,
+  lng: null,
 };
 
 export default Venues;

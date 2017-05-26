@@ -1,8 +1,8 @@
 import { SET_POSITION } from '../actions';
 
 const initialState = {
-  lat: 0,
-  lng: 0,
+  lat: null,
+  lng: null,
 };
 
 export default (state = initialState, action) => {

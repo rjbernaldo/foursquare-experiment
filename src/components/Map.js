@@ -20,23 +20,27 @@ class Map extends Component {
           const lat = position.coords.latitude;
           const lng = position.coords.longitude;
 
-          const map = new google.maps.Map(
-            document.getElementById('map'),
-            { zoom: 17, center: { lat, lng } },
-          );
-
-          const marker = new google.maps.Marker({
-            position: { lat, lng },
-            map,
-          });
-
-          this.props.setMap(map);
+          this.initMap(lat, lng);
           this.props.setPosition(lat, lng);
         });
       } else {
         alert('User geolocation is unavailable.');
       }
     };
+  }
+
+  initMap(lat, lng) {
+    const map = new google.maps.Map(
+      document.getElementById('map'),
+      { zoom: 17, center: { lat, lng } },
+    );
+
+    const marker = new google.maps.Marker({
+      position: { lat, lng },
+      map,
+    });
+
+    this.props.setMap(map);
   }
 
   render() {
@@ -62,12 +66,14 @@ Map.propTypes = {
   height: PropTypes.number,
   width: PropTypes.number,
   map: PropTypes.object,
+  venues: PropTypes.array,
 };
 
 Map.defaultProps = {
   height: 0,
   width: 0,
   map: null,
+  venues: [],
 };
 
 export default Map;
