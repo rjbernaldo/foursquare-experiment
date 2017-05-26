@@ -36,6 +36,7 @@ class Map extends Component {
     );
 
     const marker = new google.maps.Marker({
+      icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
       position: { lat, lng },
       map,
     });
@@ -43,10 +44,28 @@ class Map extends Component {
     this.props.setMap(map);
   }
 
+  renderVenueMarkers() {
+    this.props.venues.forEach((venue) => {
+      const lat = venue.location.lat;
+      const lng = venue.location.lng;
+      const title = venue.name;
+
+      const marker = new google.maps.Marker({
+        position: { lat, lng },
+        map: this.props.map.obj,
+        title,
+      });
+    });
+  }
+
   render() {
     const height = this.props.height;
     const width = this.props.width;
+    const isFetched = this.props.isFetched;
+    const isRendered = this.props.isRendered;
     const float = 'left';
+
+    if (isFetched && !isRendered) this.renderVenueMarkers();
 
     return (
       <div id="map" style={{ height, width, float }}>
@@ -67,6 +86,8 @@ Map.propTypes = {
   width: PropTypes.number,
   map: PropTypes.object,
   venues: PropTypes.array,
+  isFetched: PropTypes.bool,
+  isRendered: PropTypes.bool,
 };
 
 Map.defaultProps = {
@@ -74,6 +95,8 @@ Map.defaultProps = {
   width: 0,
   map: null,
   venues: [],
+  isFetched: false,
+  isRendered: false,
 };
 
 export default Map;

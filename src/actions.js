@@ -2,6 +2,7 @@ export const SET_DIMENSIONS = 'SET_DIMENSIONS';
 export const SET_POSITION = 'SET_POSITION';
 export const SET_MAP = 'SET_MAP';
 export const SET_VENUES = 'SET_VENUES';
+export const RENDER_VENUES = 'RENDER_VENUES';
 
 export function setDimensions(height, width, sidebarWidth) {
   return {
@@ -48,3 +49,10 @@ export function setVenues(venues) {
     venues,
   };
 }
+
+export function renderVenues() {
+  return {
+    type: RENDER_VENUES,
+  };
+}
+

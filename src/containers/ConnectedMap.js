@@ -6,6 +6,9 @@ const mapStateToProps = state => ({
   height: state.dimensions.height,
   width: state.dimensions.width,
   venues: state.venues.data,
+  isFetched: state.venues.isFetched,
+  isRendered: state.venues.isRendered,
+  map: { obj: state.map },
 });
 
 const mapDispatchToProps = dispatch => ({
