@@ -5,7 +5,8 @@ Small project to play around with different technologies using data from the Fou
 ## Project Specifications
 
   1. Should show a list of venues around a user's location (decide which venue details are relevant).
-  2. Should have the ability to adjust the radius of interest (optional).
+  2. Should have the ability to adjust the radius of interest and re-render new venues.
+  3. Should have the ability to move the map and re-render new venues.
 
 ## References
 
