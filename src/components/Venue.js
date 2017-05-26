@@ -41,15 +41,15 @@ class Venue extends Component {
     };
 
     return (
-      <a id={ data.id } href="#" className={ className } onMouseOver={ onMouseOver }>
+      <div id={ data.id } href="#" className={ className } onMouseOver={ onMouseOver }>
         <div className="d-flex w-100 justify-content-between">
           <h5 className="mb-1">{ data.name }</h5>
           <small>{ data.categories.map(category => category.name).join(', ') }</small>
         </div>
         <p className="mb-1">{ data.location.address }</p>
         <p className="mb-1">{ data.contact.phone }</p>
-        <small>{ data.url }</small>
-      </a>
+        <small><a href={ data.url }>Website</a></small>
+      </div>
     );
   }
 }
