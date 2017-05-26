@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import markers from './map';
+import dimensions from './dimensions';
+import map from './map';
 
 export default combineReducers({
-  markers,
+  dimensions,
+  map,
 });
