@@ -16,29 +16,26 @@ class Sidebar extends Component {
 
     return (
       <div style={{ height, width, overflowY, float, margin }}>
-        <h1>Sidebar</h1>
-        <h1>Sidebar</h1>
-        <h1>Sidebar</h1>
-        <h1>Sidebar</h1>
-        <h1>Sidebar</h1>
-        <h1>Sidebar</h1>
-        <h1>Sidebar</h1>
-        <h1>Sidebar</h1>
-        <h1>Sidebar</h1>
-        <h1>Sidebar</h1>
-        <h1>Sidebar</h1>
-        <h1>Sidebar</h1>
+        <h3 style={{ marginTop: '0px' }}>User Details</h3>
+        <p>Latitude: { this.props.lat }</p>
+        <p>Longitude: { this.props.lng }</p>
+
+        <h3>Venues</h3>
       </div>
     );
   }
 }
 
 Sidebar.propTypes = {
+  lat: PropTypes.number,
+  lng: PropTypes.number,
   height: PropTypes.number,
   sidebarWidth: PropTypes.number,
 };
 
 Sidebar.defaultProps = {
+  lat: 0,
+  lng: 0,
   height: 0,
   sidebarWidth: 0,
 };

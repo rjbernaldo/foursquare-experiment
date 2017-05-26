@@ -17,18 +17,17 @@ class Map extends Component {
     window.initMap = () => {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          console.log(lat, lng);
+
           const map = new google.maps.Map(
             document.getElementById('map'),
-            {
-              zoom: 17,
-              center: {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude,
-              },
-            },
+            { zoom: 17, center: { lat, lng } },
           );
 
           this.props.setMap(map);
+          this.props.setPosition(lat, lng);
         });
       } else {
         alert('User geolocation is unavailable.');
@@ -55,6 +54,7 @@ class Map extends Component {
 
 Map.propTypes = {
   setMap: PropTypes.func.isRequired,
+  setPosition: PropTypes.func.isRequired,
   height: PropTypes.number,
   width: PropTypes.number,
   map: PropTypes.object,

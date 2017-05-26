@@ -11,6 +11,14 @@ export function setDimensions(height, width, sidebarWidth) {
   };
 }
 
+export function setPosition(lat, lng) {
+  return {
+    type: SET_POSITION,
+    lat,
+    lng,
+  };
+}
+
 export function setMap(map) {
   return {
     type: SET_MAP,
