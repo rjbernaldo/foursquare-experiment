@@ -20,13 +20,22 @@ class App extends Component {
     document.head.appendChild(script);
 
     window.initMap = () => {
-      const map = new google.maps.Map(
-        document.getElementById('map'),
-        {
-          zoom: 4,
-          center: { lat: -25.363, lng: 131.044 },
-        },
-      );
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          const map = new google.maps.Map(
+            document.getElementById('map'),
+            {
+              zoom: 17,
+              center: {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+              },
+            },
+          );
+        });
+      } else {
+        alert('User geolocation is unavailable.');
+      }
     };
 
     this.updateWindowDimensions();
