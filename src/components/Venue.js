@@ -14,10 +14,7 @@ class Venue extends Component {
       ? 'list-group-item list-group-item-action flex-column align-items-start active'
       : 'list-group-item list-group-item-action flex-column align-items-start';
 
-    if (currentMarker) document.getElementById(`${data.id}`).scrollIntoView();
-
-    const onMouseOver = () => {
-      console.log('onmouseover');
+    if (currentMarker) {
       const mouseoverIcon = {
         url: 'http://games.stanford.edu/gamemaster/games/chinesecheckers/green.png',
         scaledSize: new google.maps.Size(20, 20),
@@ -26,11 +23,9 @@ class Venue extends Component {
       };
 
       data.marker.setIcon(mouseoverIcon);
-      // this.props.setCurrentMarkerId(data.id);
-    };
 
-    const onMouseOut = () => {
-      console.log('onmouseout');
+      document.getElementById(`${data.id}`).scrollIntoViewIfNeeded();
+    } else {
       const mouseoutIcon = {
         url: 'https://cdn1.iconfinder.com/data/icons/material-core/20/check-circle-outline-blank-128.png',
         scaledSize: new google.maps.Size(20, 20),
@@ -39,10 +34,14 @@ class Venue extends Component {
       };
 
       data.marker.setIcon(mouseoutIcon);
+    }
+
+    const onMouseOver = () => {
+      this.props.setCurrentMarkerId(data.id);
     };
 
     return (
-      <a id={ data.id } href="#" className={ className } onMouseOver={ onMouseOver } onMouseOut={ onMouseOut }>
+      <a id={ data.id } href="#" className={ className } onMouseOver={ onMouseOver }>
         <div className="d-flex w-100 justify-content-between">
           <h5 className="mb-1">{ data.name }</h5>
           <small>{ data.categories.map(category => category.name).join(', ') }</small>
