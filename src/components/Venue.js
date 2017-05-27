@@ -40,8 +40,8 @@ class Venue extends Component {
           <small>{ data.categories.map(category => category.name).join(', ') }</small>
         </div>
         <p className="mb-1">{ data.location.address }</p>
-        <p className="mb-1">{ data.contact.phone }</p>
-        <small><a href={ data.url }>Website</a></small>
+        { data.url ? <small><a href={ data.url }>Website</a></small> : <span /> }
+        { data.contact.phone ? <small>{ data.contact.phone }</small> : <span /> }
       </div>
     );
   }
