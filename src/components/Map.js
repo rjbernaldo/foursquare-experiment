@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-
 class Map extends Component {
   constructor(props) {
     super(props);
@@ -9,26 +8,7 @@ class Map extends Component {
   }
 
   componentDidMount() {
-    const API_KEY = process.env.API_KEY;
-    const googleMapsUrl = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`;
-    const script = document.createElement('script');
-    script.setAttribute('type', 'text/javascript');
-    script.setAttribute('src', googleMapsUrl);
-    document.head.appendChild(script);
-
-    window.initMap = () => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position) => {
-          const lat = position.coords.latitude;
-          const lng = position.coords.longitude;
-
-          this.props.renderMap(lat, lng);
-          this.props.setPosition(lat, lng);
-        });
-      } else {
-        alert('User geolocation is unavailable.');
-      }
-    };
+    this.props.attachScript();
   }
 
   render() {
@@ -43,8 +23,7 @@ class Map extends Component {
 }
 
 Map.propTypes = {
-  renderMap: PropTypes.func.isRequired,
-  setPosition: PropTypes.func.isRequired,
+  attachScript: PropTypes.func.isRequired,
   height: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
 };

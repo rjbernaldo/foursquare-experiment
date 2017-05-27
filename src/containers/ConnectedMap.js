@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Map from '../components/Map';
-import { renderMap, setPosition } from '../actions';
+import { attachScript } from '../actions';
 
 const mapStateToProps = state => ({
   height: state.dimensions.height,
@@ -8,11 +8,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  renderMap: (lat, lng) => {
-    dispatch(renderMap(lat, lng));
-  },
-  setPosition: (lat, lng) => {
-    dispatch(setPosition(lat, lng));
+  attachScript: () => {
+    dispatch(attachScript());
   },
 });
 

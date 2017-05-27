@@ -131,3 +131,29 @@ export function renderMap(lat, lng) {
     dispatch(setMap(map));
   };
 }
+
+export function attachScript() {
+  return (dispatch) => {
+    const API_KEY = process.env.API_KEY;
+    const googleMapsUrl = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`;
+    const script = document.createElement('script');
+    script.setAttribute('type', 'text/javascript');
+    script.setAttribute('src', googleMapsUrl);
+
+    document.head.appendChild(script);
+
+    window.initMap = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+
+          dispatch(renderMap(lat, lng));
+          dispatch(setPosition(lat, lng));
+        });
+      } else {
+        alert('User geolocation is unavailable.');
+      }
+    };
+  };
+}
