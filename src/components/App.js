@@ -10,12 +10,21 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const height = window.innerHeight;
-    const fullWidth = window.innerWidth;
-    const width = Math.floor(fullWidth * (2 / 3));
-    const sidebarWidth = Math.floor(fullWidth * (1 / 3)) - 16;
+    let height = window.innerHeight;
+    let fullWidth = window.innerWidth;
+    let width = Math.floor(fullWidth * (2 / 3));
+    let sidebarWidth = Math.floor(fullWidth * (1 / 3)) - 16;
 
     this.props.setDimensions(height, width, sidebarWidth);
+
+    window.addEventListener('resize', () => {
+      height = window.innerHeight;
+      fullWidth = window.innerWidth;
+      width = Math.floor(fullWidth * (2 / 3));
+      sidebarWidth = Math.floor(fullWidth * (1 / 3)) - 16;
+
+      this.props.setDimensions(height, width, sidebarWidth);
+    });
   }
 
   render() {
