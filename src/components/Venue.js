@@ -13,31 +13,21 @@ class Venue extends Component {
   render() {
     const data = this.props.data;
     const currentMarker = this.props.currentMarker === data.id;
-    const className = currentMarker
-      ? 'list-group-item list-group-item-action flex-column align-items-start active'
-      : 'list-group-item list-group-item-action flex-column align-items-start';
+    const scaledSize = new google.maps.Size(20, 20);
+    const origin = new google.maps.Point(0, 0);
+    const anchor = new google.maps.Point(0, 50);
+
+    let url = markerUrl;
+    let className = 'list-group-item list-group-item-action flex-column align-items-start';
 
     if (currentMarker) {
-      const mouseoverIcon = {
-        url: currentMarkerUrl,
-        scaledSize: new google.maps.Size(20, 20),
-        origin: new google.maps.Point(0, 0),
-        anchor: new google.maps.Point(0, 50),
-      };
-
-      data.marker.setIcon(mouseoverIcon);
-
+      className = `${className} active`;
+      url = currentMarkerUrl;
       document.getElementById(`${data.id}`).scrollIntoViewIfNeeded();
-    } else {
-      const mouseoutIcon = {
-        url: markerUrl,
-        scaledSize: new google.maps.Size(20, 20),
-        origin: new google.maps.Point(0, 0),
-        anchor: new google.maps.Point(0, 50),
-      };
-
-      data.marker.setIcon(mouseoutIcon);
     }
+
+    const icon = { url, scaledSize, origin, anchor };
+    data.marker.setIcon(icon);
 
     const onMouseOver = () => {
       this.props.setCurrentMarker(data.id);
