@@ -19,9 +19,9 @@ class Sidebar extends Component {
     const paddingTop = '8px';
     const paddingBottom = '8px';
 
-        // <ConnectedUserDetails />
     return (
       <div style={{ height, width, overflowY, float, marginLeft, paddingTop, paddingBottom }}>
+        <ConnectedUserDetails />
         <ConnectedVenues />
       </div>
     );

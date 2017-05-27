@@ -11,11 +11,13 @@ class Venues extends Component {
   render() {
     const lat = this.props.lat;
     const lng = this.props.lng;
+    const radius = this.props.radius;
+    const limit = this.props.limit;
     const isFetched = this.props.isFetched;
     const venues = this.props.venues;
 
     if (lat !== null && lng !== null && !isFetched) {
-      this.props.fetchVenues(lat, lng);
+      this.props.fetchVenues(lat, lng, radius, limit);
     }
 
     return (
@@ -32,6 +34,8 @@ Venues.propTypes = {
   fetchVenues: PropTypes.func.isRequired,
   venues: PropTypes.array.isRequired,
   isFetched: PropTypes.bool.isRequired,
+  radius: PropTypes.number.isRequired,
+  limit: PropTypes.number.isRequired,
   lat: PropTypes.number,
   lng: PropTypes.number,
 };
