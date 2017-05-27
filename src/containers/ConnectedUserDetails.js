@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import UserDetails from '../components/UserDetails';
-import { setParams } from '../actions';
+import { changeParams } from '../actions';
 
 const mapStateToProps = state => ({
   lat: state.map.lat,
@@ -10,8 +10,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setParams: (radius, limit) => {
-    dispatch(setParams(radius, limit));
+  changeParams: (radius, limit) => {
+    dispatch(changeParams(radius, limit));
   },
 });
 

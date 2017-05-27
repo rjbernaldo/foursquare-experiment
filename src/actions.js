@@ -35,7 +35,7 @@ export function fetchVenues(lat, lng, radius, limit) {
     const CLIENT_ID = process.env.CLIENT_ID;
     const CLIENT_SECRET = process.env.CLIENT_SECRET;
     const VERSION = process.env.VERSION;
-    const url = `https://api.foursquare.com/v2/venues/search?ll=${lat},${lng}&radius=${radius}&limit=${limit}&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&v=${VERSION}`;
+    const url = `https://api.foursquare.com/v2/venues/search?intent=browse&ll=${lat},${lng}&radius=${radius}&limit=${limit}&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&v=${VERSION}`;
 
     return fetch(url)
       .then(res => res.json())
@@ -85,6 +85,19 @@ export function setCurrentMarker(currentMarker) {
   return {
     type: SET_CURRENT_MARKER,
     currentMarker,
+  };
+}
+
+export function changeParams(radius, limit) {
+  return (dispatch, getState) => {
+    const venues = getState().venues;
+
+    venues.data.forEach((venue) => {
+      venue.marker.setMap(null);
+    });
+
+    dispatch(setCurrentMarker(null));
+    dispatch(setParams(radius, limit));
   };
 }
 

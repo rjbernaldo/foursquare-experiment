@@ -17,10 +17,10 @@ class UserDetails extends Component {
     const onClick = () => {
       const radius = parseFloat(this.state.radius);
       const limit = parseFloat(this.state.limit);
-      if (isNaN(radius) || isNaN(limit)) {
+      if (isNaN(radius) || isNaN(limit) || radius <= 0 || limit <= 0) {
         alert('Invalid params');
       } else {
-        this.props.setParams(radius, limit);
+        this.props.changeParams(radius, limit);
       }
     };
 
@@ -90,7 +90,7 @@ class UserDetails extends Component {
 }
 
 UserDetails.propTypes = {
-  setParams: PropTypes.func.isRequired,
+  changeParams: PropTypes.func.isRequired,
   radius: PropTypes.number.isRequired,
   limit: PropTypes.number.isRequired,
   lat: PropTypes.number,

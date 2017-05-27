@@ -18,6 +18,8 @@ class Venues extends Component {
 
     if (lat !== null && lng !== null && !isFetched) {
       this.props.fetchVenues(lat, lng, radius, limit);
+    } else if (isFetched && venues.length === 0) {
+      alert('No venues found for that query');
     }
 
     return (
