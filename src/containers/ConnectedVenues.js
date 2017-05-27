@@ -3,8 +3,8 @@ import Venues from '../components/Venues';
 import { fetchVenues } from '../actions';
 
 const mapStateToProps = state => ({
-  lat: state.position.lat,
-  lng: state.position.lng,
+  lat: state.map.lat,
+  lng: state.map.lng,
   isFetched: state.venues.isFetched,
   venues: state.venues.data,
 });

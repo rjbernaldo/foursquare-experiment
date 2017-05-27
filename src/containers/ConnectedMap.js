@@ -5,7 +5,6 @@ import { setMap, setPosition } from '../actions';
 const mapStateToProps = state => ({
   height: state.dimensions.height,
   width: state.dimensions.width,
-  venues: state.venues.data,
 });
 
 const mapDispatchToProps = dispatch => ({

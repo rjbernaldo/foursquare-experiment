@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
 import Venue from '../components/Venue';
-import { setCurrentMarkerId } from '../actions';
+import { setCurrentMarker } from '../actions';
 
 const mapStateToProps = state => ({
-  currentMarkerId: state.map.currentMarkerId,
+  currentMarker: state.map.currentMarker,
 });
 
 const mapDispatchToProps = dispatch => ({
-  setCurrentMarkerId: (currentMarkerId) => {
-    dispatch(setCurrentMarkerId(currentMarkerId));
+  setCurrentMarker: (currentMarker) => {
+    dispatch(setCurrentMarker(currentMarker));
   },
 });
 

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+const markerUrl = process.env.MARKER_URL;
+const currentMarkerUrl = process.env.CURRENT_MARKER_URL;
+
 class Venue extends Component {
   constructor(props) {
     super(props);
@@ -9,14 +12,14 @@ class Venue extends Component {
 
   render() {
     const data = this.props.data;
-    const currentMarker = this.props.currentMarkerId === data.id;
+    const currentMarker = this.props.currentMarker === data.id;
     const className = currentMarker
       ? 'list-group-item list-group-item-action flex-column align-items-start active'
       : 'list-group-item list-group-item-action flex-column align-items-start';
 
     if (currentMarker) {
       const mouseoverIcon = {
-        url: 'http://games.stanford.edu/gamemaster/games/chinesecheckers/green.png',
+        url: currentMarkerUrl,
         scaledSize: new google.maps.Size(20, 20),
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(0, 50),
@@ -27,7 +30,7 @@ class Venue extends Component {
       document.getElementById(`${data.id}`).scrollIntoViewIfNeeded();
     } else {
       const mouseoutIcon = {
-        url: 'https://cdn1.iconfinder.com/data/icons/material-core/20/check-circle-outline-blank-128.png',
+        url: markerUrl,
         scaledSize: new google.maps.Size(20, 20),
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(0, 50),
@@ -37,7 +40,7 @@ class Venue extends Component {
     }
 
     const onMouseOver = () => {
-      this.props.setCurrentMarkerId(data.id);
+      this.props.setCurrentMarker(data.id);
     };
 
     return (
@@ -55,9 +58,9 @@ class Venue extends Component {
 }
 
 Venue.propTypes = {
-  setCurrentMarkerId: PropTypes.func.isRequired,
+  setCurrentMarker: PropTypes.func.isRequired,
   data: PropTypes.object,
-  currentMarkerId: PropTypes.string,
+  currentMarker: PropTypes.string,
 };
 
 export default Venue;

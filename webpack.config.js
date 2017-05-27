@@ -33,6 +33,8 @@ module.exports = {
         CLIENT_ID: JSON.stringify(process.env.CLIENT_ID),
         CLIENT_SECRET: JSON.stringify(process.env.CLIENT_SECRET),
         VERSION: JSON.stringify(process.env.VERSION),
+        MARKER_URL: JSON.stringify(process.env.MARKER_URL),
+        CURRENT_MARKER_URL: JSON.stringify(process.env.CURRENT_MARKER_URL),
       },
     }),
   ],

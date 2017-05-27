@@ -1,12 +1,13 @@
 import { connect } from 'react-redux';
 import UserDetails from '../components/UserDetails';
 
+const mapStateToProps = state => ({
+  lat: state.map.lat,
+  lng: state.map.lng,
+});
+
 const mapDispatchToProps = dispatch => ({
 });
 
-const mapStateToProps = state => ({
-  lat: state.position.lat,
-  lng: state.position.lng,
-});
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserDetails);

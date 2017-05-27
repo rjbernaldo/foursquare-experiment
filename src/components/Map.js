@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+const API_KEY = process.env.API_KEY;
+const googleMapsUrl = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`;
+const markerUrl = process.env.MARKER_URL;
+
 class Map extends Component {
   constructor(props) {
     super(props);
@@ -8,10 +12,9 @@ class Map extends Component {
   }
 
   componentDidMount() {
-    const API_KEY = process.env.API_KEY;
     const script = document.createElement('script');
     script.setAttribute('type', 'text/javascript');
-    script.setAttribute('src', `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`);
+    script.setAttribute('src', googleMapsUrl);
     document.head.appendChild(script);
 
     window.initMap = () => {
@@ -37,7 +40,7 @@ class Map extends Component {
 
     const marker = new google.maps.Marker({
       icon: {
-        url: 'http://www.iconsdb.com/icons/preview/tropical-blue/circle-outline-xxl.png',
+        url: markerUrl,
         scaledSize: new google.maps.Size(20, 20),
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(0, 50),

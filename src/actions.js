@@ -1,7 +1,8 @@
 export const SET_DIMENSIONS = 'SET_DIMENSIONS';
 export const SET_POSITION = 'SET_POSITION';
+export const SET_RADIUS = 'SET_RADIUS';
 export const SET_MAP = 'SET_MAP';
-export const SET_CURRENT_MARKER_ID = 'SET_CURRENT_MARKER_ID';
+export const SET_CURRENT_MARKER = 'SET_CURRENT_MARKER';
 export const SET_VENUES = 'SET_VENUES';
 export const RENDER_VENUES = 'RENDER_VENUES';
 
@@ -56,7 +57,7 @@ export function fetchVenues(lat, lng) {
           });
 
           marker.addListener('mouseover', () => {
-            dispatch(setCurrentMarkerId(venue.id));
+            dispatch(setCurrentMarker(venue.id));
           });
 
           return Object.assign({}, venue, { marker });
@@ -80,9 +81,9 @@ export function renderVenues() {
   };
 }
 
-export function setCurrentMarkerId(currentMarkerId) {
+export function setCurrentMarker(currentMarker) {
   return {
-    type: SET_CURRENT_MARKER_ID,
-    currentMarkerId,
+    type: SET_CURRENT_MARKER,
+    currentMarker,
   };
 }
