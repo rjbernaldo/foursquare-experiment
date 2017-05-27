@@ -108,3 +108,26 @@ export function setParams(radius, limit) {
     limit,
   };
 }
+
+export function renderMap(lat, lng) {
+  return (dispatch) => {
+    const markerUrl = process.env.MARKER_URL;
+    const map = new google.maps.Map(
+      document.getElementById('map'),
+      { zoom: 17, center: { lat, lng } },
+    );
+
+    const marker = new google.maps.Marker({
+      icon: {
+        url: markerUrl,
+        scaledSize: new google.maps.Size(20, 20),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(0, 50),
+      },
+      position: { lat, lng },
+      map,
+    });
+
+    dispatch(setMap(map));
+  };
+}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ConnectedVenue from '../Containers/ConnectedVenue';
+import ConnectedVenue from '../containers/ConnectedVenue';
 
 class Venues extends Component {
   constructor(props) {

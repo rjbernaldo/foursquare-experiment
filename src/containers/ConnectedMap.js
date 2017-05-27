@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Map from '../components/Map';
-import { setMap, setPosition } from '../actions';
+import { renderMap, setPosition } from '../actions';
 
 const mapStateToProps = state => ({
   height: state.dimensions.height,
@@ -8,8 +8,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setMap: (map) => {
-    dispatch(setMap(map));
+  renderMap: (lat, lng) => {
+    dispatch(renderMap(lat, lng));
   },
   setPosition: (lat, lng) => {
     dispatch(setPosition(lat, lng));

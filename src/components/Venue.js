@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-const markerUrl = process.env.MARKER_URL;
-const currentMarkerUrl = process.env.CURRENT_MARKER_URL;
-
 class Venue extends Component {
   constructor(props) {
     super(props);
@@ -11,6 +8,8 @@ class Venue extends Component {
   }
 
   render() {
+    const markerUrl = process.env.MARKER_URL;
+    const currentMarkerUrl = process.env.CURRENT_MARKER_URL;
     const data = this.props.data;
     const currentMarker = this.props.currentMarker === data.id;
     const scaledSize = new google.maps.Size(20, 20);
