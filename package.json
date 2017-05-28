@@ -4,9 +4,11 @@
   "description": "Small project to play around with different technologies using data from the Foursquare API.",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && node server.js",
+    "start": "node server.js",
+    "dev": "npm run build && node server.js",
     "build": "./node_modules/.bin/webpack --config ./webpack.config.js"
   },
+  "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rjbernaldo/foursquare-experiment.git"
