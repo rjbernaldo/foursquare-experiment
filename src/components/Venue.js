@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+const MARKER_URL = process.env.MARKER_URL;
+const CURRENT_MARKER_URL = process.env.CURRENT_MARKER_URL;
+
 class Venue extends Component {
   constructor(props) {
     super(props);
@@ -8,32 +11,26 @@ class Venue extends Component {
   }
 
   render() {
-    const markerUrl = process.env.MARKER_URL;
-    const currentMarkerUrl = process.env.CURRENT_MARKER_URL;
     const data = this.props.data;
     const currentMarker = this.props.currentMarker === data.id;
     const scaledSize = new google.maps.Size(20, 20);
     const origin = new google.maps.Point(0, 0);
     const anchor = new google.maps.Point(0, 50);
 
-    let url = markerUrl;
+    let url = MARKER_URL;
     let className = 'list-group-item list-group-item-action flex-column align-items-start';
 
     if (currentMarker) {
       className = `${className} active`;
-      url = currentMarkerUrl;
+      url = CURRENT_MARKER_URL;
       document.getElementById(`${data.id}`).scrollIntoViewIfNeeded();
     }
 
     const icon = { url, scaledSize, origin, anchor };
     data.marker.setIcon(icon);
 
-    const onMouseOver = () => {
-      this.props.setCurrentMarker(data.id);
-    };
-
     return (
-      <div id={ data.id } href="#" className={ className } onMouseOver={ onMouseOver }>
+      <div id={ data.id } href="#" className={ className } onMouseOver={ () => { this.props.setCurrentMarker(data.id); } }>
         <div className="d-flex w-100 justify-content-between">
           <h5 className="mb-1">{ data.name }</h5>
           <small>{ data.categories.map(category => category.name).join(', ') }</small>

@@ -35,6 +35,7 @@ module.exports = {
         VERSION: JSON.stringify(process.env.VERSION),
         MARKER_URL: JSON.stringify(process.env.MARKER_URL),
         CURRENT_MARKER_URL: JSON.stringify(process.env.CURRENT_MARKER_URL),
+        USER_MARKER_URL: JSON.stringify(process.env.USER_MARKER_URL),
       },
     }),
   ],

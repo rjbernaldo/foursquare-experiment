@@ -6,6 +6,12 @@ export const SET_CURRENT_MARKER = 'SET_CURRENT_MARKER';
 export const SET_VENUES = 'SET_VENUES';
 export const RENDER_VENUES = 'RENDER_VENUES';
 
+const CLIENT_ID = process.env.CLIENT_ID;
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
+const VERSION = process.env.VERSION;
+const API_KEY = process.env.API_KEY;
+const USER_MARKER_URL = process.env.USER_MARKER_URL;
+
 export function setDimensions(height, width, sidebarWidth) {
   return {
     type: SET_DIMENSIONS,
@@ -32,9 +38,6 @@ export function setMap(map) {
 
 export function fetchVenues(lat, lng, radius, limit) {
   return (dispatch, getState) => {
-    const CLIENT_ID = process.env.CLIENT_ID;
-    const CLIENT_SECRET = process.env.CLIENT_SECRET;
-    const VERSION = process.env.VERSION;
     const url = `https://api.foursquare.com/v2/venues/search?intent=browse&ll=${lat},${lng}&radius=${radius}&limit=${limit}&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&v=${VERSION}`;
 
     return fetch(url)
@@ -111,7 +114,6 @@ export function setParams(radius, limit) {
 
 export function renderMap(lat, lng) {
   return (dispatch) => {
-    const markerUrl = process.env.MARKER_URL;
     const map = new google.maps.Map(
       document.getElementById('map'),
       { zoom: 17, center: { lat, lng } },
@@ -119,7 +121,7 @@ export function renderMap(lat, lng) {
 
     const marker = new google.maps.Marker({
       icon: {
-        url: markerUrl,
+        url: USER_MARKER_URL,
         scaledSize: new google.maps.Size(20, 20),
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(0, 50),
@@ -134,7 +136,6 @@ export function renderMap(lat, lng) {
 
 export function attachScript() {
   return (dispatch) => {
-    const API_KEY = process.env.API_KEY;
     const googleMapsUrl = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`;
     const script = document.createElement('script');
     script.setAttribute('type', 'text/javascript');
