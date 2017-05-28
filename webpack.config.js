@@ -29,6 +29,7 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
         API_KEY: JSON.stringify(process.env.API_KEY),
         CLIENT_ID: JSON.stringify(process.env.CLIENT_ID),
         CLIENT_SECRET: JSON.stringify(process.env.CLIENT_SECRET),
@@ -38,5 +39,6 @@ module.exports = {
         USER_MARKER_URL: JSON.stringify(process.env.USER_MARKER_URL),
       },
     }),
+    new webpack.optimize.UglifyJsPlugin(),
   ],
 };
