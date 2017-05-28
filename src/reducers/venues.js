@@ -1,4 +1,4 @@
-import { SET_VENUES, RENDER_VENUES, SET_PARAMS } from '../actions';
+import { SET_VENUES, RENDER_VENUES, SET_PARAMS } from '../actions/venues';
 
 const initialState = {
   isFetched: false,

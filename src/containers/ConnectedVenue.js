@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Venue from '../components/Venue';
-import { setCurrentMarker } from '../actions';
+import { setCurrentMarker } from '../actions/map';
 
 const mapStateToProps = state => ({
   currentMarker: state.map.currentMarker,

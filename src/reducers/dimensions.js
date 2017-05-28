@@ -1,4 +1,4 @@
-import { SET_DIMENSIONS } from '../actions';
+import { SET_DIMENSIONS } from '../actions/dimensions';
 
 const initialState = {
   height: 0,

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import UserDetails from '../components/UserDetails';
-import { changeParams } from '../actions';
+import { changeParams } from '../actions/venues';
 
 const mapStateToProps = state => ({
   lat: state.map.lat,

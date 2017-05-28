@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Venues from '../components/Venues';
-import { fetchVenues } from '../actions';
+import { fetchVenues } from '../actions/venues';
 
 const mapStateToProps = state => ({
   lat: state.map.lat,
