@@ -11,18 +11,18 @@ class UserDetails extends Component {
     };
   }
 
+  onClick() {
+    const radius = parseFloat(this.state.radius);
+    const limit = parseFloat(this.state.limit);
+    if (isNaN(radius) || isNaN(limit) || radius <= 0 || limit <= 0) {
+      alert('Invalid params');
+    } else {
+      this.props.changeParams(radius, limit);
+    }
+  }
+
   render() {
     const className = 'list-group-item list-group-item-success flex-column align-items-start';
-
-    const onClick = () => {
-      const radius = parseFloat(this.state.radius);
-      const limit = parseFloat(this.state.limit);
-      if (isNaN(radius) || isNaN(limit) || radius <= 0 || limit <= 0) {
-        alert('Invalid params');
-      } else {
-        this.props.changeParams(radius, limit);
-      }
-    };
 
     return (
       <div className="list-group">
@@ -81,7 +81,7 @@ class UserDetails extends Component {
             </div>
           </div>
           <div className="mb-1">
-            <button type="button" className="btn btn-primary" onClick={ onClick }>Change</button>
+            <button type="button" className="btn btn-primary" onClick={ this.onClick }>Change</button>
           </div>
         </div>
       </div>
