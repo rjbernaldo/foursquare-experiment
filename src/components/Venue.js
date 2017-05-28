@@ -30,7 +30,7 @@ class Venue extends Component {
     data.marker.setIcon(icon);
 
     return (
-      <div id={ data.id } href="#" className={ className } onMouseOver={ () => { this.props.setCurrentMarker(data.id); } }>
+      <div id={ data.id } className={ className } onMouseOver={ () => { this.props.setCurrentMarker(data.id); } }>
         <div className="d-flex w-100 justify-content-between">
           <h5 className="mb-1">{ data.name }</h5>
           <small>{ data.categories.map(category => category.name).join(', ') }</small>
@@ -45,8 +45,12 @@ class Venue extends Component {
 
 Venue.propTypes = {
   setCurrentMarker: PropTypes.func.isRequired,
-  data: PropTypes.object,
+  data: PropTypes.object.isRequired,
   currentMarker: PropTypes.string,
+};
+
+Venue.defaultProps = {
+  currentMarker: '',
 };
 
 export default Venue;
