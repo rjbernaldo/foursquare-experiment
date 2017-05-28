@@ -8,24 +8,27 @@ class Venues extends Component {
     this.props = props;
   }
 
-  render() {
+  fetchVenues() {
     const lat = this.props.lat;
     const lng = this.props.lng;
     const radius = this.props.radius;
     const limit = this.props.limit;
     const isFetched = this.props.isFetched;
-    const venues = this.props.venues;
 
     if (lat !== null && lng !== null && !isFetched) {
       this.props.fetchVenues(lat, lng, radius, limit);
-    } else if (isFetched && venues.length === 0) {
+    } else if (isFetched && this.props.venues.length === 0) {
       alert('No venues found for that query');
     }
+  }
+
+  render() {
+    this.fetchVenues();
 
     return (
       <div>
         <div className="list-group">
-          { venues.map(venue => <ConnectedVenue data={venue} key={venue.id} />) }
+          { this.props.venues.map(venue => <ConnectedVenue data={venue} key={venue.id} />) }
         </div>
       </div>
     );
