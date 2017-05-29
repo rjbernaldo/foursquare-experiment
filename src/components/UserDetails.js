@@ -81,7 +81,7 @@ class UserDetails extends Component {
             </div>
           </div>
           <div className="mb-1">
-            <button type="button" className="btn btn-primary" onClick={ this.onClick }>Change</button>
+            <button type="button" className="btn btn-primary" onClick={ () => this.onClick() }>Change</button>
           </div>
         </div>
       </div>
